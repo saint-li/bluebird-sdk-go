@@ -3,9 +3,9 @@ package tspsdk
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gogf/gf/crypto/gsha1"
-	"github.com/gogf/gf/os/gtime"
-	"github.com/gogf/gf/util/grand"
+	"github.com/gogf/gf/v2/crypto/gsha1"
+	"github.com/gogf/gf/v2/os/gtime"
+	"github.com/gogf/gf/v2/util/grand"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
 	"net/url"
@@ -31,7 +31,7 @@ func (p *Auth) GetToken() (*result.AuthResult, error) {
 		return nil, err
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var result = new(result.AuthResult)
 	err = json.Unmarshal([]byte(jsonString), result)
 	if err != nil {
@@ -40,6 +40,3 @@ func (p *Auth) GetToken() (*result.AuthResult, error) {
 
 	return result, err
 }
-
-
-

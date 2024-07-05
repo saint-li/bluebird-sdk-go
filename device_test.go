@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"fmt"
-	"github.com/gogf/gf/frame/g"
+	"github.com/gogf/gf/v2/frame/g"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"testing"
 )
@@ -19,7 +19,7 @@ func TestDevice_GetDevice(t *testing.T) {
 // 设备列表
 func TestDevice_GetDevices(t *testing.T) {
 	query := &query.DevicesGetQuery{
-		Page: 1,
+		Page:  1,
 		Limit: 10,
 	}
 	res := NewClient(gateWay, appKey, token).Device().GetDevices(query)
@@ -48,7 +48,7 @@ func TestDevice_GetDeviceIsOnline(t *testing.T) {
 // 透传报文
 func TestDevice_SendMessage(t *testing.T) {
 	query := &query.DeviceMessageQuery{
-		ImeiSn: "xxxxxxxxxxxxxxx",
+		ImeiSn:  "xxxxxxxxxxxxxxx",
 		Message: "ABABAB",
 	}
 
@@ -69,10 +69,10 @@ func TestDevice_GetDeviceModules(t *testing.T) {
 // 绑定设备
 func TestDevice_BindDevice(t *testing.T) {
 	query := &query.DeviceBindQuery{
-		ImeiSn: "xxxxxxxxxxxxxxx",
+		ImeiSn:   "xxxxxxxxxxxxxxx",
 		TrueName: "设备名称",
-		Mobile: "11111111111",
-		Uuid: "1000-0-0000-xxxxxxxxxxxxxxx",
+		Mobile:   "11111111111",
+		Uuid:     "1000-0-0000-xxxxxxxxxxxxxxx",
 	}
 
 	res := NewClient(gateWay, appKey, token).Device().BindDevice(query)
@@ -114,8 +114,8 @@ func TestDevice_SendLocateUpload(t *testing.T) {
 func TestDevice_SendUdtime(t *testing.T) {
 	query := &query.DeviceUdtimeQuery{
 		ImeiSn: "xxxxxxxxxxxxxxx",
-		Start: "06:00",
-		End: "18:00",
+		Start:  "06:00",
+		End:    "18:00",
 	}
 
 	res := NewClient(gateWay, appKey, token).Device().SendUdtime(query)
@@ -128,7 +128,7 @@ func TestDevice_SendFamily(t *testing.T) {
 		ImeiSn: "xxxxxxxxxxxxxxx",
 		Families: []query.Family{
 			{
-				Mobile: "xxxxxxxxx",
+				Mobile:   "xxxxxxxxx",
 				Relation: "主人",
 			},
 		},
@@ -141,7 +141,7 @@ func TestDevice_SendFamily(t *testing.T) {
 // 下发设置定位模式指令
 func TestDevice_SendLocateMode(t *testing.T) {
 	query := &query.DeviceLocateModeQuery{
-		ImeiSn: "589465010004004",
+		ImeiSn:     "589465010004004",
 		LocateMode: "1",
 	}
 
@@ -153,8 +153,8 @@ func TestDevice_SendLocateMode(t *testing.T) {
 func TestDevice_SendHost(t *testing.T) {
 	query := &query.DeviceHostQuery{
 		ImeiSn: "xxxxxxxxxxxxxxx",
-		Host: "test.xxx.xu5g.com",
-		Port: "2232",
+		Host:   "test.xxx.xu5g.com",
+		Port:   "2232",
 	}
 
 	res := NewClient(gateWay, appKey, token).Device().SendHost(query)
@@ -196,7 +196,7 @@ func TestDevice_SendMonitor(t *testing.T) {
 func TestDevice_SendDnd(t *testing.T) {
 	query := &query.DeviceDndQuery{
 		ImeiSn: "xxxxxxxxxxxxxxx",
-		Dnd: "8:00-11:30|123456;14:00-17:30|12345",
+		Dnd:    "8:00-11:30|123456;14:00-17:30|12345",
 	}
 
 	res := NewClient(gateWay, appKey, token).Device().SendDnd(query)
@@ -206,7 +206,7 @@ func TestDevice_SendDnd(t *testing.T) {
 // 更新设备信息
 func TestDevice_DeviceUpdate(t *testing.T) {
 	query := &query.DeviceUpdateQuery{
-		ImeiSn: "xxxxxxxxxxxxxxx",
+		ImeiSn:   "xxxxxxxxxxxxxxx",
 		Truename: "小明",
 	}
 
@@ -228,8 +228,8 @@ func TestDevice_DeviceDelete(t *testing.T) {
 func TestDevice_DeviceSleepTime(t *testing.T) {
 	query := &query.SendSleepTimeQuery{
 		ImeiSn: "xxxxxxxxxxxxxxx",
-		Start: "01:00",
-		End: "12:00",
+		Start:  "01:00",
+		End:    "12:00",
 	}
 
 	res := NewClient(gateWay, appKey, token).Device().DeviceSleepTime(query)
@@ -239,8 +239,8 @@ func TestDevice_DeviceSleepTime(t *testing.T) {
 // 下发传输微聊音频文件到设备的指令
 func TestDevice_DeviceWechat(t *testing.T) {
 	query := &query.DeviceWechatQuery{
-		ImeiSn: "xxxxxxxxxxxxxxx",
-		WechatAudioUrl:"",
+		ImeiSn:         "xxxxxxxxxxxxxxx",
+		WechatAudioUrl: "",
 	}
 
 	res := NewClient(gateWay, appKey, token).Device().DeviceWechat(query)
@@ -250,7 +250,7 @@ func TestDevice_DeviceWechat(t *testing.T) {
 // 变更通话白名单状态
 func TestDevice_DeviceWhitelistStatus(t *testing.T) {
 	query := &query.DeviceWhitelistStatus{
-		ImeiSn: "xxxxxxxxxxxxxxx",
+		ImeiSn:          "xxxxxxxxxxxxxxx",
 		WhitelistStatus: 0,
 	}
 
@@ -272,11 +272,11 @@ func TestDevice_DeviceBatchLocateMode(t *testing.T) {
 func TestDevice_DeviceRemind(t *testing.T) {
 	param := g.List{}
 	param = append(param, g.Map{
-		"date":"08:00",
-		"status":1,
-		"remind_type":"2",
-		"week":"0111110",
-		"title":"起床闹钟",
+		"date":        "08:00",
+		"status":      1,
+		"remind_type": "2",
+		"week":        "0111110",
+		"title":       "起床闹钟",
 	})
 
 	query := &query.DeviceRemind{
@@ -286,4 +286,3 @@ func TestDevice_DeviceRemind(t *testing.T) {
 	res := NewClient(gateWay, appKey, token).Device().DeviceRemind(query)
 	fmt.Println(res)
 }
-

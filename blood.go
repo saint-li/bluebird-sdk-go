@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"encoding/json"
-	"github.com/gogf/gf/container/gmap"
+	"github.com/gogf/gf/v2/container/gmap"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -30,7 +30,7 @@ func (p *Blood) GetBlood(query *query.BloodGetQuery) *result.BloodGetResult {
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.BloodGetResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
@@ -65,7 +65,7 @@ func (p *Blood) GetBloods(query *query.BloodsGetQuery) *result.BloodsGetResult {
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.BloodsGetResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
@@ -94,7 +94,7 @@ func (p *Blood) GetBloodUpload(query *query.BloodUploadGetQuery) *result.BloodUp
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.BloodUploadResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
@@ -123,7 +123,7 @@ func (p *Blood) UpdateBloodUpload(param *query.BloodUploadSetQuery) *result.Resu
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -150,7 +150,7 @@ func (p *Blood) DeleteBlood(query *query.BloodDeleteQuery) *result.Result {
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {

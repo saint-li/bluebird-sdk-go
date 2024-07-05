@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"encoding/json"
-	"github.com/gogf/gf/container/gmap"
+	"github.com/gogf/gf/v2/container/gmap"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -28,20 +28,20 @@ func (p *Sleep) GetSleeps(query *query.SleepsGetQuery) *result.SleepsResult {
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPSleepsGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.SleepsResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.SleepsResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.SleepsResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -58,20 +58,20 @@ func (p *Sleep) GetSleep(query *query.SleepGetQuery) *result.SleepResult {
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPSleepGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.SleepResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.SleepResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.SleepResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -88,17 +88,17 @@ func (p *Sleep) DeleteSleep(query *query.SleepDeleteQuery) *result.Result {
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPSleepDeletePath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}

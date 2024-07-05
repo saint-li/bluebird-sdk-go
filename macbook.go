@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"encoding/json"
-	"github.com/gogf/gf/container/gmap"
+	"github.com/gogf/gf/v2/container/gmap"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -31,20 +31,20 @@ func (p *MacBook) GetMacBooks(query *query.MacBooksGetQuery) *result.MacBooksGet
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBooksGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.MacBooksGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.MacBooksGetResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.MacBooksGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -60,20 +60,20 @@ func (p *MacBook) GetMacBook(query *query.MacBookGetQuery) *result.MacBookGetRes
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBookGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.MacBookGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.MacBookGetResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.MacBookGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -100,17 +100,17 @@ func (p *MacBook) UpdateMacBook(query *query.MacbookUpdateQuery) *result.Result 
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBookUpdatePath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -126,17 +126,17 @@ func (p *MacBook) DrawMacBook(query *query.MacbookDrawQuery) *result.Result {
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBookDrawPath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -152,17 +152,17 @@ func (p *MacBook) DeleteMacBook(query *query.MacbookDeleteQuery) *result.Result 
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TspMacBookDeletePath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}

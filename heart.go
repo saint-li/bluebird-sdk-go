@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"encoding/json"
-	"github.com/gogf/gf/container/gmap"
+	"github.com/gogf/gf/v2/container/gmap"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -24,19 +24,19 @@ func (p *Heart) GetHeart(query *query.HeartGetQuery) *result.HeartResult {
 	if err != nil {
 		return &result.HeartResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.HeartResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.HeartResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -59,19 +59,19 @@ func (p *Heart) GetHearts(query *query.HeartsGetQuery) *result.HeartsResult {
 	if err != nil {
 		return &result.HeartsResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.HeartsResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.HeartsResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -88,19 +88,19 @@ func (p *Heart) GetHeartUpload(query *query.HeartUploadGetQuery) *result.HeartUp
 	if err != nil {
 		return &result.HeartUploadResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.HeartUploadResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.HeartUploadResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -118,19 +118,19 @@ func (p *Heart) UpdateHeartUpload(param *query.HeartUploadSetQuery) *result.Resu
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHeartUploadSetPath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -146,17 +146,17 @@ func (p *Heart) DeleteHeart(query *query.HeartDeleteQuery) *result.Result {
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPHeartDeletePath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}

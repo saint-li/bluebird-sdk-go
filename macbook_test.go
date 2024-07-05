@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"fmt"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/util/gconv"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"testing"
 )
@@ -65,7 +65,7 @@ func TestMacBook_DrawMacBook(t *testing.T) {
 func TestMacBook_DeleteMacBook(t *testing.T) {
 	params := &query.MacbookDeleteQuery{
 		MakAddr: "xxxxxxxxxxxxxxxxxxxxxxxxxx",
-		Mac: "xxxxxxxxxxxxxxxxxxxxxxxxx",
+		Mac:     "xxxxxxxxxxxxxxxxxxxxxxxxx",
 	}
 
 	res := NewClient(gateWay, appKey, token).MacBook().DeleteMacBook(params)

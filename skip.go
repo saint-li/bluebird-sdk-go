@@ -35,7 +35,7 @@ func (p *Skip) GetSkips(query *query.SkipsGetQuery) *result.SkipsResult {
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.SkipsResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {

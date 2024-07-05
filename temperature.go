@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"encoding/json"
-	"github.com/gogf/gf/container/gmap"
+	"github.com/gogf/gf/v2/container/gmap"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -23,20 +23,20 @@ func (p *Temperature) GetTemperature(query *query.TemperatureGetQuery) *result.T
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperatureGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.TemperatureResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.TemperatureResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.TemperatureResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -58,20 +58,20 @@ func (p *Temperature) GetTemperatures(query *query.TemperaturesGetQuery) *result
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperaturesGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.TemperaturesResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.TemperaturesResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.TemperaturesResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -87,20 +87,20 @@ func (p *Temperature) GetTemperatureUpload(query *query.TemperatureUploadGetQuer
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperatureUploadGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.TemperatureUploadResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.TemperatureUploadResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.TemperatureUploadResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -118,18 +118,18 @@ func (p *Temperature) UpdateTemperatureUpload(param *query.TemperatureUploadSetQ
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperatureUploadSetPath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -145,17 +145,17 @@ func (p *Temperature) DeleteTemperature(query *query.TemperatureDeleteQuery) *re
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTemperatureDeletePath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}

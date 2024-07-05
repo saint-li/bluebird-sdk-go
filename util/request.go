@@ -1,12 +1,13 @@
 package util
 
 import (
+	context2 "context"
 	"errors"
 	"fmt"
-	"github.com/gogf/gf/encoding/gjson"
-	"github.com/gogf/gf/frame/g"
-	"github.com/gogf/gf/os/gtime"
-	"github.com/gogf/gf/util/grand"
+	"github.com/gogf/gf/v2/encoding/gjson"
+	"github.com/gogf/gf/v2/frame/g"
+	"github.com/gogf/gf/v2/os/gtime"
+	"github.com/gogf/gf/v2/util/grand"
 	"strings"
 	"time"
 )
@@ -58,10 +59,9 @@ func (p *Request) get() (*gjson.Json, error) {
 		client.SetHeader("token", p.Token)
 	}
 	client.SetHeader("sdkversion", SdkVersion)
-	client.SetHeader("transid",	fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Digits(12)))
+	client.SetHeader("transid", fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Digits(12)))
 
-
-	res, err := client.Get(p.Url)
+	res, err := client.Get(context2.TODO(), p.Url)
 
 	if err != nil {
 		return nil, err
@@ -73,8 +73,8 @@ func (p *Request) get() (*gjson.Json, error) {
 
 	context := res.ReadAllString()
 	json := gjson.New(context)
-	status := json.GetVar("status").String()
-	message := json.GetVar("message").String()
+	status := json.Get("status").String()
+	message := json.Get("message").String()
 	if status == "0" {
 		return json, nil
 	} else {
@@ -92,9 +92,9 @@ func (p *Request) post() (*gjson.Json, error) {
 		client.SetHeader("token", p.Token)
 	}
 	client.SetHeader("sdkversion", SdkVersion)
-	client.SetHeader("transid",	fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Digits(12)))
+	client.SetHeader("transid", fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Digits(12)))
 
-	res, err := client.Post(p.Url, p.Data)
+	res, err := client.Post(context2.TODO(), p.Url, p.Data)
 	if res.StatusCode != 200 {
 		return nil, errors.New(res.Status)
 	}
@@ -103,8 +103,8 @@ func (p *Request) post() (*gjson.Json, error) {
 	}
 	context := res.ReadAllString()
 	json := gjson.New(context)
-	status := json.GetVar("status").String()
-	message := json.GetVar("message").String()
+	status := json.Get("status").String()
+	message := json.Get("message").String()
 	if status == "0" {
 		return json, nil
 	} else {
@@ -122,10 +122,9 @@ func (p *Request) put() (*gjson.Json, error) {
 		client.SetHeader("token", p.Token)
 	}
 	client.SetHeader("sdkversion", SdkVersion)
-	client.SetHeader("transid",	fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Digits(12)))
+	client.SetHeader("transid", fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Digits(12)))
 
-
-	res, err := client.Put(p.Url, p.Data)
+	res, err := client.Put(context2.TODO(), p.Url, p.Data)
 	if res.StatusCode != 200 {
 		return nil, errors.New(res.Status)
 	}
@@ -134,8 +133,8 @@ func (p *Request) put() (*gjson.Json, error) {
 	}
 	context := res.ReadAllString()
 	json := gjson.New(context)
-	status := json.GetVar("status").String()
-	message := json.GetVar("message").String()
+	status := json.Get("status").String()
+	message := json.Get("message").String()
 	if status == "0" {
 		return json, nil
 	} else {
@@ -153,10 +152,9 @@ func (p *Request) delete() (*gjson.Json, error) {
 		client.SetHeader("token", p.Token)
 	}
 	client.SetHeader("sdkversion", SdkVersion)
-	client.SetHeader("transid",	fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Digits(12)))
+	client.SetHeader("transid", fmt.Sprintf("%s%s%s", p.AppKey, gtime.Now().Format("YmdHis"), grand.Digits(12)))
 
-
-	res, err := client.Delete(p.Url, p.Data)
+	res, err := client.Delete(context2.TODO(), p.Url, p.Data)
 
 	//if res.StatusCode != 200 {
 	//	return nil, errors.New(res.Status)
@@ -166,8 +164,8 @@ func (p *Request) delete() (*gjson.Json, error) {
 	}
 	context := res.ReadAllString()
 	json := gjson.New(context)
-	status := json.GetVar("status").String()
-	message := json.GetVar("message").String()
+	status := json.Get("status").String()
+	message := json.Get("message").String()
 	if status == "0" {
 		return json, nil
 	} else {

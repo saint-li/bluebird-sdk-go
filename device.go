@@ -30,7 +30,7 @@ func (p *Device) GetDevice(query *query.DeviceGetQuery) *result.DeviceGetResult 
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.DeviceGetResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
@@ -64,7 +64,7 @@ func (p *Device) DeviceUpdate(query *query.DeviceUpdateQuery) *result.Result {
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
@@ -96,7 +96,7 @@ func (p *Device) DeviceCreate(query *query.DeviceCreateQuery) *result.Result {
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
@@ -138,7 +138,7 @@ func (p *Device) GetDevices(query *query.DevicesGetQuery) *result.DevicesResult 
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.DevicesResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
@@ -165,7 +165,7 @@ func (p *Device) SendLocate(query *query.DeviceLocateQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	fmt.Println(jsonString)
 
 	var resData = new(result.Result)
@@ -194,7 +194,7 @@ func (p *Device) GetDeviceIsOnline(query *query.DeviceIsOnlineQuery) *result.Dev
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.DeviceIsOnlineResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
@@ -222,7 +222,7 @@ func (p *Device) SendMessage(query *query.DeviceMessageQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -250,7 +250,7 @@ func (p *Device) GetDeviceModules(query *query.DeviceModulesQuery) *result.Devic
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.DeviceModulesResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
@@ -279,7 +279,7 @@ func (p *Device) BindDevice(query *query.DeviceBindQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -304,7 +304,7 @@ func (p *Device) UnBindDevice(query *query.DeviceUnBindQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -330,7 +330,7 @@ func (p *Device) SendFindDevice(query *query.DeviceFindQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -356,7 +356,7 @@ func (p *Device) SendLocateUpload(query *query.DeviceLocateUploadQuery) *result.
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -383,7 +383,7 @@ func (p *Device) SendUdtime(query *query.DeviceUdtimeQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -410,7 +410,7 @@ func (p *Device) SendFamily(query *query.DeviceFamilyQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -437,7 +437,7 @@ func (p *Device) SendLocateMode(query *query.DeviceLocateModeQuery) *result.Resu
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -464,7 +464,7 @@ func (p *Device) SendHost(query *query.DeviceHostQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -490,7 +490,7 @@ func (p *Device) SendPowerOff(query *query.DevicePowerOffQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -516,7 +516,7 @@ func (p *Device) SendRestart(query *query.DeviceRestartQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -543,7 +543,7 @@ func (p *Device) SendMonitor(query *query.DeviceMonitorQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -570,7 +570,7 @@ func (p *Device) SendDnd(query *query.DeviceDndQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -596,7 +596,7 @@ func (p *Device) DeviceUpdateStatus(query *query.DeviceStatusQuery) *result.Resu
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -621,7 +621,7 @@ func (p *Device) DeviceDelete(query *query.DeviceDeleteQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -648,7 +648,7 @@ func (p *Device) DeviceSleepTime(query *query.SendSleepTimeQuery) *result.Result
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -674,7 +674,7 @@ func (p *Device) DeviceWechat(query *query.DeviceWechatQuery) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -700,7 +700,7 @@ func (p *Device) DeviceWhitelistStatus(query *query.DeviceWhitelistStatus) *resu
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -725,7 +725,7 @@ func (p *Device) DeviceBatchLocateMode(query *query.DeviceBatchLocateMode) *resu
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -751,7 +751,7 @@ func (p *Device) DeviceRemind(query *query.DeviceRemind) *result.Result {
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -780,7 +780,7 @@ func (p *Device) SetCronshutdown(query *query.TspSetCronshutdownRequest) *result
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -806,7 +806,7 @@ func (p *Device) DeviceWordsmessage(query *query.DeviceWordsmessage) *result.Res
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -833,7 +833,7 @@ func (p *Device) DeviceWordbook(query *query.TspSetWordBookRequest) *result.Resu
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
@@ -860,7 +860,7 @@ func (p *Device) DevicePoetrybook(query *query.TspSetPoetryBookRequest) *result.
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)

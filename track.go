@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"encoding/json"
-	"github.com/gogf/gf/container/gmap"
+	"github.com/gogf/gf/v2/container/gmap"
 	"github.com/xu5g/bluebird-sdk-go/query"
 	"github.com/xu5g/bluebird-sdk-go/result"
 	"github.com/xu5g/bluebird-sdk-go/util"
@@ -29,27 +29,26 @@ func (p *Track) GetTracks(query *query.TracksGetQuery) *result.TracksGetResult {
 	res, err := p.Cfg.HttpClient.SetMethod("get").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTracksGetPath + "?" + params.Encode()).HttpRequest()
 	if err != nil {
 		return &result.TracksGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.TracksGetResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.TracksGetResult{
-			Result:result.Result{
-				Status: 1,
+			Result: result.Result{
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 	return resData
 }
-
 
 // TrackUpdate 修改轨迹数据
 func (p *Track) TrackUpdate(query *query.TracksUpdateQuery) *result.Result {
@@ -61,16 +60,16 @@ func (p *Track) TrackUpdate(query *query.TracksUpdateQuery) *result.Result {
 	res, err := p.Cfg.HttpClient.SetMethod("put").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTracksUpdatePath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
@@ -86,17 +85,17 @@ func (p *Track) DeleteTrack(query *query.TrackDeleteQuery) *result.Result {
 	res, err := p.Cfg.HttpClient.SetMethod("delete").SetUrl(p.Cfg.HttpClient.GateWay + util.TSPTrackDeletePath).SetData(data).HttpRequest()
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}

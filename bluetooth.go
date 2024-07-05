@@ -14,7 +14,7 @@ type Bluetooth struct {
 // 蓝牙配对
 func (p *Bluetooth) SetBluetoothLink(param *query.TspBluetoothLinkRequest) *result.Result {
 	var data = make(map[string]interface{})
-	
+
 	data["imei_sn"] = param.ImeiSn
 	data["status"] = param.Status
 	data["mac"] = param.Mac
@@ -28,7 +28,7 @@ func (p *Bluetooth) SetBluetoothLink(param *query.TspBluetoothLinkRequest) *resu
 
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)

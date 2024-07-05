@@ -13,7 +13,6 @@ type Fence struct {
 	Cfg *Config
 }
 
-
 // 获取围栏列表
 func (p *Fence) GetFences(query *query.FencesGetQuery) *result.FencesGetResult {
 	params := url.Values{}
@@ -28,19 +27,19 @@ func (p *Fence) GetFences(query *query.FencesGetQuery) *result.FencesGetResult {
 	if err != nil {
 		return &result.FencesGetResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
 
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.FencesGetResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.FencesGetResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -69,19 +68,19 @@ func (p *Fence) CreateFence(query *query.FenceCreateQuery) *result.FenceCreateRe
 	if err != nil {
 		return &result.FenceCreateResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.FenceCreateResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.FenceCreateResult{
 			Result: result.Result{
-				Status: 1,
+				Status:  1,
 				Message: err.Error(),
 			},
 		}
@@ -97,17 +96,17 @@ func (p *Fence) DeleteFence(query *query.FenceDeleteQuery) *result.Result {
 
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 
 	var resData = new(result.Result)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
 		return &result.Result{
-			Status: 1,
+			Status:  1,
 			Message: err.Error(),
 		}
 	}

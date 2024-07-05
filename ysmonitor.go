@@ -21,7 +21,7 @@ func (p *YsMonitor) TSPYsmonitorAccesstokenPath() *result.YsmonitorTokenGetResul
 			},
 		}
 	}
-	jsonString := res.Export()
+	jsonString, _ := res.ToJsonString()
 	var resData = new(result.YsmonitorTokenGetResult)
 	err = json.Unmarshal([]byte(jsonString), resData)
 	if err != nil {
