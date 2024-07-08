@@ -2,14 +2,14 @@ package tspsdk
 
 import (
 	"fmt"
-	"github.com/xu5g/bluebird-sdk-go/query"
+	"github.com/saint-li/bluebird-sdk-go/query"
 	"testing"
 )
 
 // 获取围栏列表
 func TestFence_GetFences(t *testing.T) {
 	query := &query.FencesGetQuery{
-		Page: 1,
+		Page:  1,
 		Limit: 10,
 	}
 
@@ -20,15 +20,15 @@ func TestFence_GetFences(t *testing.T) {
 // 创建围栏
 func TestFence_CreateFence(t *testing.T) {
 	query := &query.FenceCreateQuery{
-		Truename: "围栏1",
-		FenceType: 1,
-		ShapeType: 2,
+		Truename:    "围栏1",
+		FenceType:   1,
+		ShapeType:   2,
 		CollideType: 2,
-		Points: "xxxx",
-		NearRadius: 1,
-		ValidStart: "xxx",
-		ValidEnd: "xxx",
-		ValidWeek: "xxx",
+		Points:      "xxxx",
+		NearRadius:  1,
+		ValidStart:  "xxx",
+		ValidEnd:    "xxx",
+		ValidWeek:   "xxx",
 	}
 
 	res := NewClient(gateWay, appKey, token).Fence().CreateFence(query)

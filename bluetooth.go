@@ -2,9 +2,9 @@ package tspsdk
 
 import (
 	"encoding/json"
-	"github.com/xu5g/bluebird-sdk-go/query"
-	"github.com/xu5g/bluebird-sdk-go/result"
-	"github.com/xu5g/bluebird-sdk-go/util"
+	"github.com/saint-li/bluebird-sdk-go/query"
+	"github.com/saint-li/bluebird-sdk-go/result"
+	"github.com/saint-li/bluebird-sdk-go/util"
 )
 
 type Bluetooth struct {

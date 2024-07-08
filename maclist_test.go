@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"fmt"
-	"github.com/xu5g/bluebird-sdk-go/query"
+	"github.com/saint-li/bluebird-sdk-go/query"
 	"testing"
 )
 
@@ -26,21 +26,21 @@ func TestMacList_GetMacLists(t *testing.T) {
 		Mac:       "xxxxxxxxxxxxxxxx",
 		StartTime: "2021-04-12 00:00:00",
 		EndTime:   "2021-04-22 00:00:00",
-		Page: 1,
-		Limit: 10,
+		Page:      1,
+		Limit:     10,
 	}
 
 	res := NewClient(gateWay, appKey, token).MacList().GetMacLists(params)
-	fmt.Println( res)
+	fmt.Println(res)
 }
 
 // 删除maclist
 func TestMacList_(t *testing.T) {
 	params := &query.MacListDeleteQuery{
 		MacAddr: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-		Id: 0,
+		Id:      0,
 	}
 
-	res:= NewClient(gateWay, appKey, token).MacList().DeleteMacList(params)
-	fmt.Println( res)
+	res := NewClient(gateWay, appKey, token).MacList().DeleteMacList(params)
+	fmt.Println(res)
 }

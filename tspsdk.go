@@ -1,6 +1,6 @@
 package tspsdk
 
-import "github.com/xu5g/bluebird-sdk-go/util"
+import "github.com/saint-li/bluebird-sdk-go/util"
 
 type Config struct {
 	HttpClient *util.Request

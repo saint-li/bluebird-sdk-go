@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"fmt"
-	"github.com/xu5g/bluebird-sdk-go/query"
+	"github.com/saint-li/bluebird-sdk-go/query"
 	"testing"
 )
 
@@ -18,7 +18,7 @@ func TestBlood_GetBlood(t *testing.T) {
 // 血压数据列表
 func TestBlood_GetBloods(t *testing.T) {
 	query := &query.BloodsGetQuery{
-		Page: 1,
+		Page:  1,
 		Limit: 10,
 	}
 	res := NewClient(gateWay, appKey, token).Blood().GetBloods(query)

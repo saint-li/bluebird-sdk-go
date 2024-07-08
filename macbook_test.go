@@ -3,7 +3,7 @@ package tspsdk
 import (
 	"fmt"
 	"github.com/gogf/gf/v2/util/gconv"
-	"github.com/xu5g/bluebird-sdk-go/query"
+	"github.com/saint-li/bluebird-sdk-go/query"
 	"testing"
 )
 

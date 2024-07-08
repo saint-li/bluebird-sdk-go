@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"fmt"
-	"github.com/xu5g/bluebird-sdk-go/query"
+	"github.com/saint-li/bluebird-sdk-go/query"
 	"testing"
 )
 
@@ -18,7 +18,7 @@ func TestTemperature_GetTemperature(t *testing.T) {
 // 体温数据列表
 func TestTemperature_GetTemperatures(t *testing.T) {
 	query := &query.TemperaturesGetQuery{
-		Page: 1,
+		Page:  1,
 		Limit: 10,
 	}
 

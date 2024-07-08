@@ -6,8 +6,8 @@ import (
 	"github.com/gogf/gf/v2/crypto/gsha1"
 	"github.com/gogf/gf/v2/os/gtime"
 	"github.com/gogf/gf/v2/util/grand"
-	"github.com/xu5g/bluebird-sdk-go/result"
-	"github.com/xu5g/bluebird-sdk-go/util"
+	"github.com/saint-li/bluebird-sdk-go/result"
+	"github.com/saint-li/bluebird-sdk-go/util"
 	"net/url"
 )
 

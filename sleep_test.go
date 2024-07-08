@@ -2,7 +2,7 @@ package tspsdk
 
 import (
 	"fmt"
-	"github.com/xu5g/bluebird-sdk-go/query"
+	"github.com/saint-li/bluebird-sdk-go/query"
 	"testing"
 )
 
@@ -10,9 +10,9 @@ import (
 func TestSleep_GetSleeps(t *testing.T) {
 	query := &query.SleepsGetQuery{
 		StartTime: "2021-02-01 00:00:00",
-		EndTime: "2021-03-31 00:00:00",
-		Page: 1,
-		Limit: 10,
+		EndTime:   "2021-03-31 00:00:00",
+		Page:      1,
+		Limit:     10,
 	}
 
 	res := NewClient(gateWay, appKey, token).Sleep().GetSleeps(query)
@@ -22,7 +22,6 @@ func TestSleep_GetSleeps(t *testing.T) {
 func TestSleep_GetSleep(t *testing.T) {
 	query := &query.SleepGetQuery{
 		ImeiSn: "xxxxxxxxxxxxxxx",
-
 	}
 
 	res := NewClient(gateWay, appKey, token).Sleep().GetSleep(query)
